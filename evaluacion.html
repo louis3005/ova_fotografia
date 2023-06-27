@@ -104,6 +104,39 @@
             <p class="panel-block" id="mensaje2"></p>
             <p id="puntos2" class="panel-block"></p>
           </article>
+          <article class="panel is-info">
+            <p class="panel-heading">
+              ¿Qué es el diafragma en fotografía?
+            </p>
+            <a class="panel-block" onclick="seleccionar3(this)" >A. El tiempo de exposición de la imagen.</a>
+            <a class="panel-block" onclick="seleccionar3(this)" id="correcta3">B. La apertura del objetivo.</a>
+            <a class="panel-block" onclick="seleccionar3(this)">C.  El enfoque de la cámara.</a>
+            <a class="panel-block" onclick="seleccionar3(this)">D. Ninguna de las anteriores</a>
+            <p class="panel-block" id="mensaje3"></p>
+            <p id="puntos3" class="panel-block"></p>
+          </article>
+          <article class="panel is-info">
+            <p class="panel-heading">
+              ¿Qué es el ISO en fotografía?
+            </p>
+            <a class="panel-block" onclick="seleccionar4(this)" id="correcta4">A. La sensibilidad del sensor de la cámara a la luz.</a>
+            <a class="panel-block" onclick="seleccionar4(this)" >B.  La distancia focal del objetivo.</a>
+            <a class="panel-block" onclick="seleccionar4(this)">C.  La velocidad de obturación de la cámara</a>
+            <a class="panel-block" onclick="seleccionar4(this)">D. Ninguna de las anteriores</a>
+            <p class="panel-block" id="mensaje4"></p>
+            <p id="puntos4" class="panel-block"></p>
+          </article>
+          <article class="panel is-info">
+            <p class="panel-heading">
+              ¿Cuál es la regla de los tercios en fotografía?
+            </p>
+            <a class="panel-block" onclick="seleccionar5(this)" id="correcta5">A. Dividir la imagen en nueve partes iguales con líneas horizontales y verticales.</a>
+            <a class="panel-block" onclick="seleccionar5(this)" >B. Usar un objetivo de focal fija de 50 mm.</a>
+            <a class="panel-block" onclick="seleccionar5(this)">C.  Encuadrar el sujeto en el centro de la imagen.</a>
+            <a class="panel-block" onclick="seleccionar5(this)">D. Ninguna de las anteriores</a>
+            <p class="panel-block" id="mensaje5"></p>
+            <p id="puntos5" class="panel-block"></p>
+          </article>
           <p id="RESULTADOFINAL" class="title"></p>
     </section>
     <script>
@@ -111,7 +144,16 @@
       var pregunta1puntos = 0;
       var pregunta2 = false;	
       var pregunta2puntos = 0;
+      var pregunta3 = false;
+      var pregunta3puntos= 0;
       var resultadoFinal = 0;
+      var pregunta4 = false;
+      var pregunta4puntos= 0;
+      var resultadoFinal = 0;
+      var pregunta5 = false;
+      var pregunta5puntos= 0;
+      var resultadoFinal = 0;
+      
       function seleccionar1(evento) {
       if (pregunta1 === false) {
         let mensaje = document.getElementById("mensaje1")
@@ -150,8 +192,65 @@
           resultado();
     }
       }
+      function seleccionar3(evento) {
+    if (pregunta3 === false) {
+        let mensaje = document.getElementById("mensaje3")
+        if (evento.id === "correcta3") {
+          mensaje.innerText = "¡correcto!" + evento.innerText + " es la respuesta"
+          mensaje.classList.remove("has-text-danger")
+          mensaje.classList.add("has-text-primary")
+          pregunta3puntos = 1
+        } else{mensaje.innerText = "error!!" + evento.innerText + " no es la respuesta correcta"
+        mensaje.classList.remove("has-text-primary")
+        mensaje.classList.add("has-text-danger")
+        pregunta3puntos = -1
+      }
+      pregunta3 = true;
+          let mensajePuntos3 = document.getElementById("puntos3");
+          mensajePuntos3.innerText = "Puntos: " + pregunta3puntos;
+          resultado();
+    }
+      }
+      function seleccionar4(evento) {
+    if (pregunta4 === false) {
+        let mensaje = document.getElementById("mensaje4")
+        if (evento.id === "correcta4") {
+          mensaje.innerText = "¡correcto!" + evento.innerText + " es la respuesta"
+          mensaje.classList.remove("has-text-danger")
+          mensaje.classList.add("has-text-primary")
+          pregunta4puntos = 1
+        } else{mensaje.innerText = "error!!" + evento.innerText + " no es la respuesta correcta"
+        mensaje.classList.remove("has-text-primary")
+        mensaje.classList.add("has-text-danger")
+        pregunta4puntos = -1
+      }
+      pregunta4 = true;
+          let mensajePuntos4 = document.getElementById("puntos4");
+          mensajePuntos4.innerText = "Puntos: " + pregunta4puntos;
+          resultado();
+    }
+      }
+      function seleccionar5(evento) {
+    if (pregunta5 === false) {
+        let mensaje = document.getElementById("mensaje5")
+        if (evento.id === "correcta5") {
+          mensaje.innerText = "¡correcto!" + evento.innerText + " es la respuesta"
+          mensaje.classList.remove("has-text-danger")
+          mensaje.classList.add("has-text-primary")
+          pregunta5puntos = 1
+        } else{mensaje.innerText = "error!!" + evento.innerText + " no es la respuesta correcta"
+        mensaje.classList.remove("has-text-primary")
+        mensaje.classList.add("has-text-danger")
+        pregunta5puntos = -1
+      }
+      pregunta5 = true;
+          let mensajePuntos5 = document.getElementById("puntos5");
+          mensajePuntos5.innerText = "Puntos: " + pregunta5puntos;
+          resultado();
+    }
+      }
       function resultado() {
-        RESULTADOFINAL = pregunta1puntos + pregunta2puntos;
+        RESULTADOFINAL = pregunta1puntos + pregunta2puntos + pregunta3puntos + pregunta4puntos + pregunta5puntos;
         let mensajeResultado = document.getElementById("RESULTADOFINAL");
         mensajeResultado.innerText = "RESULTADO FINAL: " + RESULTADOFINAL;
       }
